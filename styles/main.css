@@ -1,0 +1,465 @@
+/* === RESET & BASE === */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: ;
+}
+
+body {
+  font-family: "Open Sans", Arial, sans-serif;
+  color: #fff;
+  line-height: 1.6;
+}
+
+/* === HEADER & NAVIGATION === */
+.header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.1rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav__logo-img {
+  max-height: 100px;
+}
+
+.nav__list {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+.nav__link,
+.nav__link--submenu {
+ color: #17418a;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  background: none;
+  border: none;
+  font-size: 1rem;
+}
+
+.nav__link:hover,
+.nav__link--submenu:hover {
+  color: #0d2a55;
+}
+
+.nav__link::after,
+.nav__link--submenu::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -3px;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(to right, #0095c9, #fff24b, #db3832);
+  transition: width 0.5s ease, left 0.5s ease;
+  border-radius: 2px;
+}
+
+.nav__link:hover::after,
+.nav__link--submenu:hover::after {
+  width: 100%;
+  left: 0;
+}
+
+
+/* Sous-menu */
+.nav__item--has-submenu {
+    position: relative;
+}
+/* Flèche à droite */
+.nav__submenu-icon {
+  margin-left: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+/* Faire tourner la flèche quand le sous-menu est ouvert */
+.nav__item--has-submenu[aria-expanded="true"] .nav__submenu-icon {
+  transform: rotate(180deg);
+}
+
+/* Sous-menu avec transition */
+.nav__submenu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+  opacity: 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #fff;
+  color: #17418a;
+  list-style: none;
+  padding: 0;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  min-width: 200px;
+  z-index: 999;
+}
+
+/* Quand le sous-menu est ouvert */
+.nav__link--submenu[aria-expanded="true"] + .nav__submenu {
+  max-height: 500px;
+  opacity: 1;
+  padding: 0.5rem 0;
+}
+
+
+/* Style des liens du sous-menu */
+.nav__submenu-item a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: #17418a;
+  font-weight: 500;
+  text-decoration: none;
+  position: relative;
+  font-size: 0.95rem;
+}
+
+.nav__submenu-item a:hover {
+  color: #000;
+}
+
+.navbar__checkbox {
+  display: none;
+}
+
+.navbar__toggle {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #17418a;
+}
+
+
+/* === HERO SECTION === */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100vh;
+  width: 100%;
+  padding: 16rem 6% 50px;
+  color: #fff;
+
+  
+  background: 
+    linear-gradient(rgba(23, 65, 138, 0.7), rgba(23, 65, 138, 0.7)), 
+    url("../assets/Palais-du-peuple-rdc-5472x3658.JPG") no-repeat center center/cover;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: url("../assets/Pieds-de-page-document.png") no-repeat center/cover;
+}
+
+
+.hero__title {
+  font-size: 3rem;
+  font-weight: 800;
+  max-width: 700px;
+}
+
+.hero__description {
+  font-size: 1.2rem;
+  max-width: 650px;
+  margin-bottom: 1rem;
+}
+
+/* Boutons */
+.hero__buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn--primary {
+  background-color: #fff24b;
+  color: #17418a;
+  border: 2px solid #fff24b;
+}
+
+.btn--primary:hover {
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+}
+
+.btn--secondary {
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+}
+
+.btn--secondary:hover {
+  background-color: #fff24b;
+  color: #17418a;
+  border: 2px solid #fff24b;
+
+}
+
+/* News */
+
+/* === NEWS SECTION === */
+.news {
+  padding: 2rem 1rem;
+  width: 100%;
+  height: 100vh;
+  background: #f9f9f9;
+}
+
+.news__header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.news__title {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: #17418a;
+}
+
+.news__subtitle {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Liste - mobile first: 1 colonne */
+.news__list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.news__item {
+  width: 100%;
+  position: relative;
+}
+
+.news__image {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+/* Carte - mobile: juste en dessous de l'image */
+.news__card {
+  position: relative;
+  max-width: 300px ;
+  margin-top: -30px; /* chevauche légèrement */
+  background: #fff;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.news__date {
+  font-size: 0.85rem;
+  color: #fff;
+  background: #db3832;
+  padding: 0.4rem 0.8rem;
+  border-radius: 10px;
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.news__card-title {
+  font-size: 1.2rem;
+  color: #17418a;
+  margin-bottom: 0.5rem;
+}
+
+.news__card-text {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.4;
+  margin-bottom: 0.8rem;
+}
+
+.news__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: #0077ff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.news__link:hover {
+  color: #0056b3;
+}
+
+
+/* Responsive */
+@media (min-width: 1024px) {
+  .news__list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .news__card {
+    position: absolute;
+    bottom: -100px; /* chevauche légèrement l'image */
+    right: -30px; /* décale vers la droite */
+    width: 120%;
+  }
+}
+
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  #menu {
+    display: block;
+  }
+  #close {
+    display: none;
+  }
+  .nav__list {
+    display: none;
+  }
+
+  .nav {
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav__toggle {
+    display: block;
+  }
+
+  .nav__list {
+    position: fixed;
+    top: 100%; /* juste sous la barre de navigation */
+    left: -100%; /* caché à gauche */
+    width: 80%; /* largeur du menu */
+    height: 80vh;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 2rem 1rem;
+    gap: 1.5rem;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.2);
+    transition: left 0.4s ease;
+    z-index: 999;
+  }
+
+  /* Afficher le menu quand checked */
+  .nav__checkbox:checked ~ .nav__list {
+    left: 0; /* menu visible */
+  }
+
+  /* Alignement des liens à gauche */
+  .nav__list .nav__item {
+    width: 100%;
+  }
+
+  .nav__list .nav__link,
+  .nav__list .nav__link--submenu {
+    width: 100%;
+    text-align: left;
+    padding: 0.5rem 0;
+    font-size: 1.1rem;
+  }
+
+  /* Sous-menu mobile */
+  .nav__submenu {
+    position: relative;
+    top: 0;
+    left: 0;
+    max-height: 0;
+    overflow: hidden;
+    background-color: #f9f9f9;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+    transition: max-height 0.3s ease;
+  }
+
+  .nav__item--has-submenu[aria-expanded="true"] .nav__submenu {
+    max-height: 500px; /* ouvrir le sous-menu */
+    padding-left: 1rem;
+  }
+
+  .nav__submenu-item a {
+    padding: 0.5rem 0;
+  }
+
+  .hero {
+    padding: 100px 1.5rem 40px;
+    align-items: center;
+    text-align: center;
+  }
+
+  .hero__title {
+    font-size: 2rem;
+  }
+
+  .hero__description {
+    font-size: 1rem;
+  }
+
+  .hero__buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+  .news{
+    height: 100vh;
+  }
+
+  .news__list {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .news__item{
+    margin-top: 5rem;
+  }
+  .news__card {
+    position: absolute;
+    bottom: -100px; /* chevauche légèrement l'image */
+    right: 30px; /* décale vers la droite */
+    width: 120%;
+  }
+  
+}
