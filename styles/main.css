@@ -146,6 +146,7 @@ body {
 
 .navbar__toggle {
   display: none;
+  color: #000;
   font-size: 1.5rem;
   cursor: pointer;
   color: #17418a;
@@ -154,6 +155,7 @@ body {
 
 /* === HERO SECTION === */
 .hero {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -165,7 +167,7 @@ body {
   
   background: 
     linear-gradient(rgba(23, 65, 138, 0.7), rgba(23, 65, 138, 0.7)), 
-    url("../assets/Palais-du-peuple-rdc-5472x3658.JPG") no-repeat center center/cover;
+    url("../assets/Palais-du-peuple-rdc-5472x3658.webp") no-repeat center center/cover;
 }
 
 .hero::after {
@@ -175,7 +177,7 @@ body {
   left: 0;
   width: 100%;
   height: 3px;
-  background: url("../assets/Pieds-de-page-document.png") no-repeat center/cover;
+  background: url("../assets/Pieds-de-page-document.webp") no-repeat center/cover;
 }
 
 
@@ -353,44 +355,55 @@ body {
   #close {
     display: none;
   }
-  .nav__list {
+
+  /* Inverser les icônes au toggle */
+  .navbar__checkbox:checked ~ .navbar__toggle #menu {
     display: none;
   }
-
-  .nav {
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .nav__toggle {
+  .navbar__checkbox:checked ~ .navbar__toggle #close {
     display: block;
   }
 
+  .nav {
+    display: flex;
+    justify-content: space-between; /* logo à gauche, burger à droite */
+    align-items: center;
+  }
+
+  /* Bouton burger visible seulement en mobile */
+  .navbar__toggle {
+    display: block;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  /* Menu mobile caché par défaut */
   .nav__list {
-    position: fixed;
-    top: 100%; /* juste sous la barre de navigation */
-    left: -100%; /* caché à gauche */
-    width: 80%; /* largeur du menu */
-    height: 80vh;
-    flex-direction: column;
-    background-color: #fff;
-    padding: 2rem 1rem;
-    gap: 1.5rem;
-    box-shadow: 2px 0 8px rgba(0,0,0,0.2);
-    transition: left 0.4s ease;
-    z-index: 999;
-  }
+  position: fixed;
+  top: 6.6rem;
+  left: -100%;
+  width: 100%;
+  height: 80vh;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 2rem 1rem;
+  gap: 1.5rem;
+  box-shadow: 2px 0 8px rgba(0,0,0,0.2);
+  transition: left 0.4s ease;
+  z-index: 999;
+  display: flex;
+}
 
-  /* Afficher le menu quand checked */
-  .nav__checkbox:checked ~ .nav__list {
-    left: 0; /* menu visible */
-  }
+.nav__list.open {
+  left: 0;
+}
 
-  /* Alignement des liens à gauche */
+  
+
+  /* Alignement des liens */
   .nav__list .nav__item {
     width: 100%;
   }
-
   .nav__list .nav__link,
   .nav__list .nav__link--submenu {
     width: 100%;
@@ -426,6 +439,7 @@ body {
     padding: 100px 1.5rem 40px;
     align-items: center;
     text-align: center;
+    margin-top: 100px;
   }
 
   .hero__title {

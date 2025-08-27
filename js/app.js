@@ -19,3 +19,29 @@ submenuButtons.forEach(button => {
 document.addEventListener('click', () => {
   submenuButtons.forEach(button => button.setAttribute('aria-expanded', 'false'));
 });
+
+
+// navigations version mobile 
+
+class MobileMenu {
+  constructor() {
+    this.checkbox = document.querySelector('.navbar__checkbox');
+    this.menu = document.querySelector('.nav__list');
+    this.menuIcon = document.getElementById('menu');
+    this.closeIcon = document.getElementById('close');
+    this.toggle = document.querySelector('.navbar__toggle');
+
+    this.toggle.addEventListener('click', () => this.toggleMenu());
+  }
+
+  toggleMenu() {
+    this.menu.classList.toggle('open'); // on gère via classe CSS
+    this.menuIcon.style.display = this.menu.classList.contains('open') ? 'none' : 'block';
+    this.closeIcon.style.display = this.menu.classList.contains('open') ? 'block' : 'none';
+    this.checkbox.checked = this.menu.classList.contains('open'); // synchronise la checkbox
+  }
+}
+
+// Initialisation
+new MobileMenu();
+
